@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>18 Special Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NEWSPAPER -->
+<div id="newspaper" class="paper">
+  <h1 class="masthead">THE TIMES OF ADULTHOOD</h1>
+  <p class="edition">Special 18th Birthday Edition</p>
+
+  <h2 class="headline">
+    LOCAL BOY OF UP TURNS 18, CLAIMS MATURITY<br>
+    <span class="years">2008 – 2026: EVOLUTION CONTINUES</span>
+  </h2>
+
+  <p class="subhead">
+    Sources confirm he has locked himself off in his house since birth; doesn't go out.
+  </p>
+
+  <div class="columns">
+    <div class="left">
+      <h3>OFFICIAL ADULT REPORT CARD</h3>
+      <ul>
+        <li>Looks more like an animal and less human</li>
+        <li>Has a messed up sleep schedule like his brain</li>
+        <li>Gives good advice but doesn’t follow it himself</li>
+        <li>Spotted doing illegal activities</li>
+        <li>18 legally but 80 physically and mentally</li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <h3>POLL RESULTS</h3>
+      <p>Annoyance Level – 100%</p>
+      <p>Humor – Dead</p>
+      <p>Handsomeness – 10%</p>
+
+      <blockquote>
+        “He is still a child at heart but tough kid that one.”  
+        <br>– Close Associate
+      </blockquote>
+    </div>
+  </div>
+
+  <button id="turnPage">Turn Page →</button>
+</div>
+
+<!-- READY PAGE -->
+<div id="readyPage" class="hidden">
+  <h1>ARE YOU READY TO BE 18?</h1>
+  <button onclick="celebrate()">YES</button>
+  <button onclick="noOption()">NO</button>
+  <p id="response"></p>
+</div>
+
+<!-- CELEBRATION -->
+<div id="celebration" class="hidden">
+  <h1>WELCOME TO ADULTHOOD. NO REFUNDS.</h1>
+  <button onclick="showCake()">READY FOR MORE?</button>
+</div>
+
+<!-- CAKE PAGE -->
+<div id="cakePage" class="hidden">
+  <div class="cake">
+    <div class="layer"></div>
+    <div class="layer middle"></div>
+    <div class="layer top"></div>
+    <div class="candle">18</div>
+    <div id="flame"></div>
+  </div>
+
+  <h2>MAKE A WISH</h2>
+  <input type="text" id="wishInput" placeholder="Type your wish here">
+  <button onclick="burstConfetti()">Submit Wish</button>
+  <button id="blowBtn" onclick="blowCandle()" class="hidden">BLOW OUT THE CANDLE</button>
+</div>
+
+<!-- LETTER -->
+<div id="letterPage" class="hidden">
+  <div class="envelope" onclick="openLetter()">Click to Open</div>
+  <div id="letter" class="hidden">
+    <div class="letterContent">
+      <h2>To You,</h2>
+      <p>TYPE YOUR BIG LETTER HERE.</p>
+    </div>
+
+    <div class="sunflowers">
+      🌻🌻
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
