@@ -1,36 +1,25 @@
-document.getElementById("turnPage").onclick = function() {
-  document.getElementById("newspaper").classList.add("hidden");
-  document.getElementById("readyPage").classList.remove("hidden");
+document.getElementById("noBtn")?.addEventListener("click", () => {
+  const d = document.getElementById("dramaText");
+  d.innerText = "SHIT! NOT AN OPTION, SWEETY";
+  d.style.display = "block";
+});
+
+document.getElementById("yesBtn")?.addEventListener("click", () => {
+  window.location.href = "cake.html";
+});
+
+function sendWish() {
+  document.getElementById("sent").style.display = "block";
+  document.getElementById("blow").style.display = "inline-block";
 }
 
-function celebrate() {
-  document.getElementById("readyPage").classList.add("hidden");
-  document.getElementById("celebration").classList.remove("hidden");
-}
-
-function noOption() {
-  document.getElementById("response").innerText =
-  "Shit! Not an option sweety.";
-  setTimeout(celebrate, 1500);
-}
-
-function showCake() {
-  document.getElementById("celebration").classList.add("hidden");
-  document.getElementById("cakePage").classList.remove("hidden");
-}
-
-function burstConfetti() {
-  alert("Confetti burst!");
-  document.getElementById("blowBtn").classList.remove("hidden");
-}
-
-function blowCandle() {
+function blow() {
   document.getElementById("flame").style.display = "none";
-  document.getElementById("cakePage").classList.add("hidden");
-  document.getElementById("letterPage").classList.remove("hidden");
+  document.getElementById("smoke").style.display = "block";
+  setTimeout(()=>window.location.href="letter.html",2000);
 }
 
 function openLetter() {
-  document.querySelector(".envelope").classList.add("hidden");
-  document.getElementById("letter").classList.remove("hidden");
+  document.querySelector(".wax").style.display="none";
+  document.getElementById("content").style.display="block";
 }
