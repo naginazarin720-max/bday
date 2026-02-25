@@ -1,24 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Letter</title>
-<link rel="stylesheet" href="style.css">
+<title>For You</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:#f2ede4;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Georgia, serif;
+}
+
+.scene{
+  display:flex;
+  gap:60px;
+  align-items:center;
+}
+
+/* LETTER */
+.letter{
+  width:420px;
+  height:280px;
+  background:#fdf6e3;
+  position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+.wax{
+  width:70px;
+  height:70px;
+  background:darkred;
+  border-radius:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  box-shadow:inset -6px -6px 10px rgba(0,0,0,.3);
+}
+
+.content{
+  display:none;
+  padding:30px;
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* BOUQUET */
+.bouquet{
+  position:relative;
+  width:180px;
+  animation:sway 4s ease-in-out infinite;
+}
+
+@keyframes sway{
+  0%,100%{ transform:rotate(-1deg); }
+  50%{ transform:rotate(1deg); }
+}
+
+/* FLOWERS */
+.flower{
+  width:70px;
+  height:70px;
+  background:#f2c94c;
+  border-radius:50%;
+  position:absolute;
+  top:0;
+}
+
+.flower::after{
+  content:"";
+  width:22px;
+  height:22px;
+  background:#5c3b1e;
+  border-radius:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.flower.one{ left:20px; }
+.flower.two{ right:20px; }
+
+/* WRAPPER */
+.wrapper{
+  position:absolute;
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:160px;
+  height:120px;
+  background:#d6b98c;
+  clip-path:polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+}
+
+/* BOW */
+.bow{
+  position:absolute;
+  bottom:-18px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.bow::before,
+.bow::after{
+  content:"";
+  width:30px;
+  height:16px;
+  background:#a15c3a;
+  border-radius:50%;
+  position:absolute;
+}
+
+.bow::before{ left:-30px; }
+.bow::after{ left:0; }
+
+.knot{
+  width:12px;
+  height:12px;
+  background:#7a3e26;
+  border-radius:50%;
+  position:absolute;
+  left:-6px;
+  top:2px;
+}
+</style>
 </head>
-<body class="letter-bg">
+<body>
 
-<div class="letter-wrap">
-  <div class="sunflower left"></div>
-  <div class="sunflower right"></div>
+<div class="scene">
 
+  <!-- LETTER -->
   <div class="letter">
     <div class="wax" onclick="openLetter()"></div>
     <div class="content" id="content">
-      <!-- YOU WRITE YOUR LETTER TEXT HERE -->
+      <!-- hey--!>
     </div>
   </div>
+
+  <!-- BOUQUET -->
+  <div class="bouquet">
+    <div class="flower one"></div>
+    <div class="flower two"></div>
+    <div class="wrapper"></div>
+    <div class="bow">
+      <div class="knot"></div>
+    </div>
+  </div>
+
 </div>
 
-<script src="script.js"></script>
+<script>
+function openLetter(){
+  document.querySelector(".wax").style.display="none";
+  document.getElementById("content").style.display="block";
+}
+</script>
+
 </body>
 </html>
