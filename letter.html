@@ -2,149 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You</title>
+<title>Letter</title>
+
 <style>
 body{
   margin:0;
   height:100vh;
-  background:#f2ede4;
+  background:#1c1c1c;
+  overflow:hidden;
   display:flex;
   justify-content:center;
   align-items:center;
-  font-family:Georgia, serif;
+  font-family:"Times New Roman", serif;
 }
 
-/* SCENE */
-.scene{
-  display:flex;
-  gap:50px;
-  align-items:flex-end;
+/* PETALS */
+.petal{
+  position:absolute;
+  top:-60px;
+  width:38px;
+  height:38px;
+  background:radial-gradient(circle at top left, #ffb7c5, #e36a87);
+  border-radius:70% 30% 70% 30%;
+  opacity:0.9;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
 }
 
 /* LETTER */
 .letter{
-  width:420px;
-  height:280px;
-  background:#fdf6e3;
-  position:relative;
-  box-shadow:0 15px 35px rgba(0,0,0,.25);
+  width:70vw;
+  max-width:700px;
+  min-height:70vh;
+  background:#e8ddcc;
+  padding:50px;
+  box-shadow:0 40px 90px rgba(0,0,0,0.7);
+  font-size:20px;
+  line-height:1.7;
 }
 
-.wax{
-  width:64px;
-  height:64px;
+/* WAX SEAL */
+.seal{
+  width:80px;
+  height:80px;
   background:#8b0000;
   border-radius:50%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  cursor:pointer;
-}
-
-.wax::after{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border-radius:50%;
-  box-shadow:inset 2px 2px 6px rgba(0,0,0,.4);
-}
-
-.content{
-  display:none;
-  padding:28px;
-  font-size:16px;
-  line-height:1.6;
-}
-
-/* BOUQUET (STATIC BASE) */
-.bouquet{
-  width:160px;
-  position:relative;
-}
-
-/* FLOWERS */
-.flower{
-  width:64px;
-  height:64px;
-  background:#f2c94c;
-  border-radius:50%;
-  position:absolute;
-  top:0;
-}
-
-.flower::after{
-  content:"";
-  width:20px;
-  height:20px;
-  background:#5c3b1e;
-  border-radius:50%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-}
-
-.f1{ left:0; }
-.f2{ right:0; }
-
-/* WRAP PAPER */
-.wrap{
-  position:absolute;
-  top:40px;
-  left:50%;
-  transform:translateX(-50%);
-  width:150px;
-  height:120px;
-  background:#d6b98c;
-  border-radius:0 0 12px 12px;
-}
-
-/* BOW (ONLY THING THAT MOVES) */
-.bow{
-  position:absolute;
-  bottom:-12px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.loop{
-  width:28px;
-  height:14px;
-  background:#a15c3a;
-  border-radius:50%;
-  position:absolute;
-  animation:wiggle 3s ease-in-out infinite;
-}
-
-.loop.left{ left:-30px; }
-.loop.right{ left:0; }
-
-.knot{
-  width:10px;
-  height:10px;
-  background:#7a3e26;
-  border-radius:50%;
-  position:absolute;
-  left:-5px;
-  top:2px;
-}
-
-@keyframes wiggle{
-  0%,100%{ transform:rotate(0deg); }
-  50%{ transform:rotate(3deg); }
+  margin:20px auto 0;
 }
 </style>
 </head>
+
 <body>
 
-<div class="scene">
-
-  <!-- LETTER -->
-  <div class="letter">
-    <div class="wax" onclick="openLetter()"></div>
-    <div class="content" id="content">
-      <!--HAPPY BIRTHDAY SOUP:)
+<div class="letter">
+  <!-- YOU TYPE YOUR LETTER HERE -->
+  To You,<br><br>
+  HAPPY BIRTHDAY SOUP:)
 You turned EIGHTEEN yayyyaayyay!!
 I dont know what to say where to start, these days my brain is lil messed up too, should have written the letter before exams!
 first of all i am kind of replyin to your msgs late these days so im sorry for that.
@@ -153,30 +71,23 @@ And i really really pray that everything gets better for you this year coz you d
 I know its difficult but take care of yourself yea?
 I am waiting for the Subh who made stupid jokes and listened to my rants and gave me gyan. The one who talked to me when i couldn't sleep and never got offended coz of my mood swings and all that. I hope you dont lose those parts of yourself.
 For what its worth, im really grateful to have you in my life. And i am proud of you.
+ 
+Nagina
 
 (p.s. ignore the grammatical errors coz i typed it in laptop)
- -->
-    </div>
-  </div>
 
-  <!-- BOUQUET -->
-  <div class="bouquet">
-    <div class="sunflower f1"></div>
-    <div class="sunflower f2"></div>
-    <div class="wrap"></div>
-    <div class="bow">
-      <div class="loop left"></div>
-      <div class="loop right"></div>
-      <div class="knot"></div>
-    </div>
-  </div>
-
+  <div class="seal"></div>
 </div>
 
 <script>
-function openLetter(){
-  document.querySelector(".wax").style.display="none";
-  document.getElementById("content").style.display="block";
+/* PETALS */
+for(let i=0;i<30;i++){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=7+Math.random()*4+"s";
+  p.style.animationDelay=Math.random()*5+"s";
+  document.body.appendChild(p);
 }
 </script>
 
