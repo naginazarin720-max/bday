@@ -1,72 +1,167 @@
-body {
-  margin: 0;
-  font-family: Georgia, serif;
-  background: #f5f1e8;
+*{
+  box-sizing:border-box;
 }
 
-.paper {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px;
-  background: #fdfaf3;
-  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+body{
+  margin:0;
+  min-height:100vh;
+  background:#0f0f0f;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:"Times New Roman", Georgia, serif;
 }
 
-.headline { text-align:center; font-size:42px; }
-.year { color:black; }
-.subhead { text-align:center; font-style:italic; }
-
-.columns { display:flex; gap:40px; }
-.col { width:50%; }
-
-.question { text-align:center; margin-top:40px; }
-#dramaText { font-size:48px; text-align:center; display:none; }
-
-.cake-bg { background:#f6f1e9; height:100vh; display:flex; justify-content:center; align-items:center; }
-.cake-wrap { text-align:center; }
-
-.cake { position:relative; width:220px; margin:auto; }
-.layer { height:55px; background:#e6b8a2; border-radius:8px; margin-bottom:6px; }
-.mid { background:#ddb892; }
-.bot { background:#cfa17a; }
-
-.candle { position:absolute; top:-70px; left:50%; transform:translateX(-50%); width:14px; height:60px; background:white; }
-.flame { width:18px; height:25px; background:orange; border-radius:50%; animation:flicker .2s infinite; }
-@keyframes flicker { from{transform:scale(1)} to{transform:scale(1.1)} }
-
-#sent, #blow { display:none; margin-top:10px; }
-
-.letter-bg { background:#f2ede4; height:100vh; display:flex; justify-content:center; align-items:center; }
-.letter-wrap { position:relative; }
-
-.letter {
-  width:400px;
-  height:260px;
-  background:#fdf6e3;
+/* MAIN NEWSPAPER */
+.newspaper{
   position:relative;
+  width:94vw;
+  max-width:1150px;
+  min-height:92vh;
+  background:#cfc6b8;
+  padding:45px 55px;
+  box-shadow:
+    inset 0 0 45px rgba(0,0,0,0.35),
+    inset 0 0 120px rgba(0,0,0,0.12),
+    0 35px 90px rgba(0,0,0,0.75);
+  overflow:hidden;
+  animation:floatPaper 7s ease-in-out infinite;
 }
 
-.wax {
-  width:70px;
-  height:70px;
-  background:darkred;
-  border-radius:50%;
+/* PAPER FLOAT */
+@keyframes floatPaper{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
+}
+
+/* ROUGH / AGED TEXTURE */
+.newspaper::before{
+  content:"";
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+  inset:0;
+  background:
+    repeating-radial-gradient(
+      rgba(0,0,0,0.045) 0 1px,
+      transparent 1px 3px
+    ),
+    linear-gradient(
+      rgba(255,255,255,0.05),
+      rgba(0,0,0,0.08)
+    );
+  pointer-events:none;
+}
+
+/* DARKEN EDGES */
+.newspaper::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.45);
+  pointer-events:none;
+}
+
+/* MASTHEAD */
+.masthead{
+  text-align:center;
+  border-bottom:4px solid #111;
+  padding-bottom:14px;
+  margin-bottom:22px;
+}
+
+.paper-name{
+  font-size:60px;
+  font-weight:900;
+  letter-spacing:2.5px;
+}
+
+.paper-date{
+  font-size:14px;
+  margin-top:6px;
+  opacity:0.85;
+}
+
+/* EVOLUTION LINE */
+.timeline{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  margin:28px 0 38px;
+  font-size:17px;
+}
+
+.dot{
+  width:11px;
+  height:11px;
+  background:#111;
+  border-radius:50%;
+}
+
+.line{
+  width:140px;
+  height:2px;
+  background:#111;
+}
+
+/* HEADLINE */
+.headline{
+  text-align:center;
+  font-size:46px;
+  font-weight:800;
+  margin-bottom:14px;
+  letter-spacing:0.5px;
+}
+
+/* SUBHEAD */
+.subhead{
+  text-align:center;
+  font-size:19px;
+  font-style:italic;
+  margin-bottom:40px;
+}
+
+/* COLUMNS */
+.columns{
+  display:flex;
+  gap:55px;
+}
+
+.left-column,
+.right-column{
+  width:50%;
+  font-size:19px;
+  line-height:1.75;
+}
+
+/* COLUMN TITLES */
+.column-title{
+  font-weight:800;
+  margin-bottom:12px;
+  text-decoration:underline;
+}
+
+/* QUOTE */
+.quote{
+  margin-top:38px;
+  text-align:center;
+  font-size:19px;
+  font-style:italic;
+}
+
+/* CORNER FOLD */
+.corner-fold{
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:0;
+  height:0;
+  border-left:100px solid transparent;
+  border-top:100px solid rgba(0,0,0,0.22);
   cursor:pointer;
+  animation:pulseFold 2.5s infinite;
 }
 
-.content { display:none; padding:30px; }
-
-.sunflower {
-  width:80px;
-  height:80px;
-  background:gold;
-  border-radius:50%;
-  position:absolute;
-  top:50%;
+@keyframes pulseFold{
+  0%,100%{ opacity:0.45; }
+  50%{ opacity:1; }
 }
-.left { left:-100px; }
-.right { right:-100px; }
