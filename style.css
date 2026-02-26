@@ -176,6 +176,8 @@ body{
     0 45px 120px rgba(0,0,0,0.85);
 }
 
-.corner-fold:hover{
+.corner-fold{
+  cursor:pointer;
+}{
   border-top-color: rgba(0,0,0,0.35);
 }
