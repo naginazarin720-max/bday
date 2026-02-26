@@ -181,3 +181,73 @@ body{
 }{
   border-top-color: rgba(0,0,0,0.35);
 }
+/* ===== FRONT PAGE PATCH (DO NOT REMOVE EXISTING CSS) ===== */
+
+/* overall newspaper size & vibe */
+.front-page, .newspaper {
+  width: 90vw;
+  max-width: 1400px;
+  min-height: 90vh;
+  background: #e3dccf;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+  padding: 60px;
+  margin: auto;
+  position: relative;
+  animation: floatPaper 6s ease-in-out infinite;
+}
+
+/* darker, rough paper texture */
+.front-page::before, .newspaper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0,0,0,0.03),
+      rgba(0,0,0,0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  pointer-events: none;
+}
+
+/* subtle floating animation */
+@keyframes floatPaper {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* headline drama */
+.main-headline {
+  font-family: "Times New Roman", serif;
+  font-size: 72px;
+  letter-spacing: 1px;
+}
+
+/* columns enhancement ONLY (no removal) */
+.left-column, .right-column {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* date + evolution line */
+.paper-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+/* next-page hint (corner curl vibe) */
+.page-corner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, transparent 50%, #cfc6b6 50%);
+  cursor: pointer;
+}
