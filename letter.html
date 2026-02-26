@@ -8,7 +8,7 @@
 body{
   margin:0;
   height:100vh;
-  background:#1c1c1c;
+  background:#151515;
   overflow:hidden;
   display:flex;
   justify-content:center;
@@ -20,49 +20,64 @@ body{
 .petal{
   position:absolute;
   top:-60px;
-  width:38px;
-  height:38px;
-  background:radial-gradient(circle at top left, #ffb7c5, #e36a87);
+  width:40px;
+  height:40px;
+  background:radial-gradient(circle at top left,#ffc0cb,#e35a7a);
   border-radius:70% 30% 70% 30%;
-  opacity:0.9;
   animation:fall linear infinite;
 }
 
 @keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(360deg);
-  }
+  to{ transform:translateY(110vh) rotate(360deg); }
 }
 
 /* LETTER */
+.envelope{
+  width:700px;
+  height:450px;
+  background:#e6dccb;
+  position:relative;
+  perspective:1000px;
+}
+
 .letter{
-  width:70vw;
-  max-width:700px;
-  min-height:70vh;
-  background:#e8ddcc;
-  padding:50px;
-  box-shadow:0 40px 90px rgba(0,0,0,0.7);
-  font-size:20px;
-  line-height:1.7;
+  position:absolute;
+  inset:0;
+  padding:60px;
+  background:#f1e8d8;
+  transform-origin:top;
+  transform:rotateX(90deg);
+  transition:.8s ease;
+  overflow:auto;
+}
+
+.envelope.open .letter{
+  transform:rotateX(0);
 }
 
 /* WAX SEAL */
 .seal{
-  width:80px;
-  height:80px;
+  width:90px;
+  height:90px;
   background:#8b0000;
   border-radius:50%;
-  margin:20px auto 0;
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.6);
 }
 </style>
 </head>
 
 <body>
 
-<div class="letter">
-  <!-- YOU TYPE YOUR LETTER HERE -->
-  To You,<br><br>
-  HAPPY BIRTHDAY SOUP:)
+<div class="envelope" id="env">
+  <div class="letter">
+    <!-- WRITE YOUR LETTER HERE -->
+    To You,<br><br>
+    HAPPY BIRTHDAY SOUP:)
 You turned EIGHTEEN yayyyaayyay!!
 I dont know what to say where to start, these days my brain is lil messed up too, should have written the letter before exams!
 first of all i am kind of replyin to your msgs late these days so im sorry for that.
@@ -71,23 +86,26 @@ And i really really pray that everything gets better for you this year coz you d
 I know its difficult but take care of yourself yea?
 I am waiting for the Subh who made stupid jokes and listened to my rants and gave me gyan. The one who talked to me when i couldn't sleep and never got offended coz of my mood swings and all that. I hope you dont lose those parts of yourself.
 For what its worth, im really grateful to have you in my life. And i am proud of you.
- 
-Nagina
 
 (p.s. ignore the grammatical errors coz i typed it in laptop)
 
-  <div class="seal"></div>
+    <br><br>
+    — always.
+  </div>
+  <div class="seal" onclick="openLetter()"></div>
 </div>
 
 <script>
-/* PETALS */
-for(let i=0;i<30;i++){
+for(let i=0;i<25;i++){
   const p=document.createElement("div");
   p.className="petal";
   p.style.left=Math.random()*100+"vw";
   p.style.animationDuration=7+Math.random()*4+"s";
-  p.style.animationDelay=Math.random()*5+"s";
   document.body.appendChild(p);
+}
+
+function openLetter(){
+  document.getElementById("env").classList.add("open");
 }
 </script>
 
