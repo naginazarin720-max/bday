@@ -3,18 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <title>Breaking News</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  margin:0;
+  background:#e6e1d7;
+  font-family: "Times New Roman", serif;
+}
+
+.newspaper{
+  max-width:900px;
+  margin:40px auto;
+  padding:50px;
+  background:#fdfaf3;
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.3),
+    inset 0 0 60px rgba(0,0,0,0.05);
+  position:relative;
+}
+
+/* paper texture */
+.newspaper::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,0.06), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(0,0,0,0.06), transparent 40%);
+  pointer-events:none;
+}
+
+.headline{
+  text-align:center;
+  font-size:52px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+.year{
+  display:block;
+  font-size:20px;
+  margin-top:10px;
+  color:#000;
+}
+
+.subhead{
+  text-align:center;
+  font-style:italic;
+  font-size:20px;
+  margin-bottom:40px;
+}
+
+.columns{
+  display:flex;
+  gap:40px;
+}
+
+.col{
+  width:50%;
+  font-size:18px;
+}
+
+.col h3{
+  border-bottom:2px solid #000;
+  padding-bottom:5px;
+}
+
+blockquote{
+  margin-top:40px;
+  font-style:italic;
+  text-align:center;
+  font-size:18px;
+}
+
+/* page turn hint */
+.turn{
+  margin-top:50px;
+  text-align:right;
+  font-size:16px;
+  cursor:pointer;
+}
+.turn:hover{
+  text-decoration:underline;
+}
+</style>
 </head>
+
 <body>
 
-<div class="paper">
+<div class="newspaper">
+
   <h1 class="headline">
-    LOCAL BOY OF UP TURNS 18<br>
+    LOCAL BOY OF UP TURNS 18
     <span class="year">— 2008 —</span>
   </h1>
-  <h2 class="subhead">
+
+  <div class="subhead">
     Sources confirm he has locked himself in his house since birth; doesn’t go out
-  </h2>
+  </div>
 
   <div class="columns">
     <div class="col">
@@ -24,7 +110,7 @@
         <li>Has a messed-up sleep schedule like his brain</li>
         <li>Gives good advice but never follows it</li>
         <li>Spotted doing illegal activities</li>
-        <li>18 legally but 80 physically and mentally</li>
+        <li>18 legally but 80 physically</li>
       </ul>
     </div>
 
@@ -40,15 +126,11 @@
     “He is still a child at heart but a tough kid.” — close associate
   </blockquote>
 
-  <div class="question">
-    <h1>ARE YOU READY TO BE 18?</h1>
-    <button id="noBtn">NO</button>
-    <button id="yesBtn">YES</button>
+  <div class="turn" onclick="location.href='question.html'">
+    Turn the page →
   </div>
 
-  <div id="dramaText"></div>
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
