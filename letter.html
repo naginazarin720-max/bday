@@ -14,10 +14,11 @@ body{
   font-family:Georgia, serif;
 }
 
+/* SCENE */
 .scene{
   display:flex;
-  gap:60px;
-  align-items:center;
+  gap:50px;
+  align-items:flex-end;
 }
 
 /* LETTER */
@@ -26,45 +27,46 @@ body{
   height:280px;
   background:#fdf6e3;
   position:relative;
-  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 .wax{
-  width:70px;
-  height:70px;
-  background:darkred;
+  width:64px;
+  height:64px;
+  background:#8b0000;
   border-radius:50%;
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
   cursor:pointer;
-  box-shadow:inset -6px -6px 10px rgba(0,0,0,.3);
+}
+
+.wax::after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:50%;
+  box-shadow:inset 2px 2px 6px rgba(0,0,0,.4);
 }
 
 .content{
   display:none;
-  padding:30px;
+  padding:28px;
   font-size:16px;
   line-height:1.6;
 }
 
-/* BOUQUET */
+/* BOUQUET (STATIC BASE) */
 .bouquet{
+  width:160px;
   position:relative;
-  width:180px;
-  animation:sway 4s ease-in-out infinite;
-}
-
-@keyframes sway{
-  0%,100%{ transform:rotate(-1deg); }
-  50%{ transform:rotate(1deg); }
 }
 
 /* FLOWERS */
 .flower{
-  width:70px;
-  height:70px;
+  width:64px;
+  height:64px;
   background:#f2c94c;
   border-radius:50%;
   position:absolute;
@@ -73,8 +75,8 @@ body{
 
 .flower::after{
   content:"";
-  width:22px;
-  height:22px;
+  width:20px;
+  height:20px;
   background:#5c3b1e;
   border-radius:50%;
   position:absolute;
@@ -83,50 +85,54 @@ body{
   transform:translate(-50%,-50%);
 }
 
-.flower.one{ left:20px; }
-.flower.two{ right:20px; }
+.f1{ left:0; }
+.f2{ right:0; }
 
-/* WRAPPER */
-.wrapper{
+/* WRAP PAPER */
+.wrap{
   position:absolute;
-  bottom:-10px;
+  top:40px;
   left:50%;
   transform:translateX(-50%);
-  width:160px;
+  width:150px;
   height:120px;
   background:#d6b98c;
-  clip-path:polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+  border-radius:0 0 12px 12px;
 }
 
-/* BOW */
+/* BOW (ONLY THING THAT MOVES) */
 .bow{
   position:absolute;
-  bottom:-18px;
+  bottom:-12px;
   left:50%;
   transform:translateX(-50%);
 }
 
-.bow::before,
-.bow::after{
-  content:"";
-  width:30px;
-  height:16px;
+.loop{
+  width:28px;
+  height:14px;
   background:#a15c3a;
   border-radius:50%;
   position:absolute;
+  animation:wiggle 3s ease-in-out infinite;
 }
 
-.bow::before{ left:-30px; }
-.bow::after{ left:0; }
+.loop.left{ left:-30px; }
+.loop.right{ left:0; }
 
 .knot{
-  width:12px;
-  height:12px;
+  width:10px;
+  height:10px;
   background:#7a3e26;
   border-radius:50%;
   position:absolute;
-  left:-6px;
+  left:-5px;
   top:2px;
+}
+
+@keyframes wiggle{
+  0%,100%{ transform:rotate(0deg); }
+  50%{ transform:rotate(3deg); }
 }
 </style>
 </head>
@@ -138,16 +144,18 @@ body{
   <div class="letter">
     <div class="wax" onclick="openLetter()"></div>
     <div class="content" id="content">
-      <!-- hey--!>
+      <!--hey -->
     </div>
   </div>
 
   <!-- BOUQUET -->
   <div class="bouquet">
-    <div class="flower one"></div>
-    <div class="flower two"></div>
-    <div class="wrapper"></div>
+    <div class="sunflower f1"></div>
+    <div class="sunflower f2"></div>
+    <div class="wrap"></div>
     <div class="bow">
+      <div class="loop left"></div>
+      <div class="loop right"></div>
       <div class="knot"></div>
     </div>
   </div>
