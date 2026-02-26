@@ -1,6 +1,6 @@
 document.getElementById("noBtn")?.addEventListener("click", () => {
   const d = document.getElementById("dramaText");
-  d.innerText = "SHIT! NOT AN OPTION, SWEETY";
+  d.innerText = "SHIT! NOT AN OPTION, SWEETY!";
   d.style.display = "block";
 });
 
