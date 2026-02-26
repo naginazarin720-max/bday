@@ -5,8 +5,6 @@
 <title>Question</title>
 
 <style>
-*{ box-sizing:border-box; }
-
 body{
   margin:0;
   height:100vh;
@@ -17,42 +15,27 @@ body{
   font-family:Georgia, serif;
 }
 
-/* CRUMPLED PAPER */
 .paper{
-  width:520px;          /* BIGGER */
-  height:360px;         /* BIGGER */
+  width:520px;
+  height:360px;
   background:#e2d8ca;
   padding:40px;
-  box-shadow:0 30px 70px rgba(0,0,0,0.65);
+  box-shadow:0 30px 70px rgba(0,0,0,.65);
+  transform:scale(.6) rotate(6deg);
+  transition:.6s ease;
   cursor:pointer;
-  transform:scale(0.6) rotate(6deg);
-  transition:transform 0.6s ease;
-  position:relative;
 }
 
-/* OPEN STATE */
 .paper.open{
   transform:scale(1) rotate(0);
   cursor:default;
 }
 
-/* CONTENT */
-.content{
-  display:none;
-  text-align:center;
-}
+.content{ display:none; text-align:center; }
+.paper.open .content{ display:block; }
 
-.paper.open .content{
-  display:block;
-}
+h1{ font-size:42px; margin-bottom:30px; }
 
-/* QUESTION */
-h1{
-  font-size:42px;       /* BIG FONT */
-  margin-bottom:30px;
-}
-
-/* BUTTONS */
 .buttons{
   display:flex;
   justify-content:center;
@@ -62,23 +45,25 @@ h1{
 button{
   padding:14px 30px;
   font-size:22px;
-  font-family:inherit;
-  border:none;
-  cursor:pointer;
   background:#2b2b2b;
   color:white;
+  border:none;
+  cursor:pointer;
 }
 
-button:hover{
-  background:#000;
-}
-
-/* NO MESSAGE */
 .no-text{
   display:none;
-  font-size:36px;
+  font-size:34px;
   font-weight:bold;
-  margin-top:40px;
+  margin-top:25px;
+}
+
+.back{
+  display:none;
+  margin-top:20px;
+  font-size:18px;
+  text-decoration:underline;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -86,7 +71,7 @@ button:hover{
 <body>
 
 <div class="paper" id="paper">
-  <div class="content" id="content">
+  <div class="content">
     <h1>Are you ready to be 18?</h1>
 
     <div class="buttons" id="buttons">
@@ -97,6 +82,10 @@ button:hover{
     <div class="no-text" id="noText">
       Shit! Not an option sweety
     </div>
+
+    <div class="back" id="back" onclick="resetChoice()">
+      okay okay… click yes 🙄
+    </div>
   </div>
 </div>
 
@@ -104,21 +93,24 @@ button:hover{
 const paper = document.getElementById("paper");
 const buttons = document.getElementById("buttons");
 const noText = document.getElementById("noText");
+const back = document.getElementById("back");
 
-// unfold paper
-paper.addEventListener("click", () => {
-  paper.classList.add("open");
-});
+paper.onclick = () => paper.classList.add("open");
 
-// YES → next page
 function yes(){
-  window.location.href = "cake.html";
+  window.location.href="cake.html";
 }
 
-// NO → dramatic message
 function no(){
-  buttons.style.display = "none";
-  noText.style.display = "block";
+  buttons.style.display="none";
+  noText.style.display="block";
+  back.style.display="block";
+}
+
+function resetChoice(){
+  buttons.style.display="flex";
+  noText.style.display="none";
+  back.style.display="none";
 }
 </script>
 
